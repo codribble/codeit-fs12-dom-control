@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4000/expenses';
+const BASE_URL = "http://localhost:4000/expenses";
 
 /**
  * 모든 지출 목록을 가져옵니다.
@@ -9,6 +9,11 @@ const BASE_URL = 'http://localhost:4000/expenses';
  */
 export async function getExpenses() {
   // TODO: fetch를 사용하여 GET 요청을 보내고, 결과를 반환하세요
+  const res = await fetch(BASE_URL);
+  const expenses = await res.json();
+  // console.log("get expenses => ", expenses);
+
+  return expenses;
 }
 
 /**
@@ -21,7 +26,20 @@ export async function getExpenses() {
  * @returns {Promise<Object>} 생성된 지출 객체
  */
 export async function createExpense(expenseData) {
+  console.log(expenseData);
+
   // TODO: fetch를 사용하여 POST 요청을 보내고, 결과를 반환하세요
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(expenseData),
+  });
+  const created = await res.json();
+  console.log(created);
+
+  return created;
 }
 
 /**
@@ -34,4 +52,12 @@ export async function createExpense(expenseData) {
  */
 export async function deleteExpense(id) {
   // TODO: fetch를 사용하여 DELETE 요청을 보내고, 결과를 반환하세요
+
+  // console.log(id);
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+  });
+  const deleted = res.json();
+
+  return deleted;
 }
