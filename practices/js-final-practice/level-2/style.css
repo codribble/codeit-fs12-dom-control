@@ -1,4 +1,4 @@
-/* CSS Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +6,204 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f5f5;
   color: #333;
+  line-height: 1.6;
 }
 
-/* TODO: 필요한 스타일을 직접 추가하세요 */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+/* 폼 스타일 */
+#expense-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-row button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.form-row button:hover {
+  background-color: #2980b9;
+}
+
+/* 총 지출 섹션 */
+.total-section {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#total-amount {
+  color: #e74c3c;
+  font-size: 22px;
+}
+
+/* 테이블 스타일 */
+#expense-list {
+  list-style: none;
+}
+
+#expense-list > li {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+#expense-list > li:not(:first-child) {
+  margin-top: 20px;
+}
+
+.expense-item {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s;
+  z-index: 1;
+}
+
+#expense-list > li:hover .expense-item {
+  width: calc(100% - 50px);
+  border-radius: 0 8px 8px 0;
+}
+
+.expense-item > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expense-item > div:not(:first-child) {
+  margin-top: 15px;
+}
+
+.expense-item .expense-date {
+}
+
+.expense-item .item-price {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.expense-item .item-title {
+  font-size: 20px;
+}
+
+.btn-group {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  border-radius: 8px 0 0 8px;
+}
+
+.btn-group > button {
+  flex: 1;
+  width: 100%;
+}
+
+.btn-delete {
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 0 0 0 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-edit {
+  padding: 6px 12px;
+  background-color: #21b313;
+  color: #fff;
+  border: none;
+  border-radius: 4px 0 0 0;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+  background-color: #0d9f08;
+}
+
+#categories {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#categories .btn-filter {
+  padding-block: 8px;
+  background-color: #3498db;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+#categories .btn-filter.active {
+  background-color: #2c3e50;
+}
+
+.empty-list {
+  padding-block: 20px;
+  text-align: center;
+}

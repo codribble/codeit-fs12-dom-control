@@ -8,11 +8,25 @@
       "amount": 12000
     },
     {
-      "id": 2,
-      "date": "2024-03-05",
+      "date": "2026-03-03",
+      "category": "교통",
+      "description": "택시 요금",
+      "amount": 10860,
+      "id": 4
+    },
+    {
+      "date": "2026-03-12",
       "category": "교통",
       "description": "버스 요금",
-      "amount": 1400
+      "amount": 1500,
+      "id": 5
+    },
+    {
+      "date": "2026-03-13",
+      "category": "쇼핑",
+      "description": "무얼 샀을까",
+      "amount": 30000,
+      "id": 6
     }
   ]
 }

@@ -1,15 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>지출 관리 앱</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- TODO: 여기에 앱 UI를 직접 작성하세요 -->
-  <!-- 필요한 요소: 지출 추가/수정 폼, 카테고리 필터, 총 합계 표시, 지출 목록 -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지출 관리 앱</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- TODO: 여기에 앱 UI를 직접 작성하세요 -->
+    <!-- 필요한 요소: 지출 추가/수정 폼, 카테고리 필터, 총 합계 표시, 지출 목록 -->
+    <div id="app" class="container">
+      <form id="expense-form">
+        <div class="form-row">
+          <input type="date" id="expenses-date" required />
+          <select name="" id="expenses-category" required>
+            <option value="">분류</option>
+            <option value="식비">식비</option>
+            <option value="교통">교통</option>
+            <option value="쇼핑">쇼핑</option>
+            <option value="문화">문화</option>
+            <option value="기타">기타</option>
+          </select>
+          <input
+            type="text"
+            id="expenses-description"
+            required
+            placeholder="지출 품목 또는 내용"
+          />
+          <input
+            type="number"
+            min="0"
+            id="expenses-price"
+            required
+            placeholder="금액"
+          />
+          <button type="submit" id="btn-submit">추가</button>
+        </div>
+      </form>
 
-  <script type="module" src="js/main.js"></script>
-</body>
+      <div id="categories">
+        <button data-keyword="" class="btn-filter active">전체</button>
+        <button data-keyword="식비" class="btn-filter">식비</button>
+        <button data-keyword="교통" class="btn-filter">교통</button>
+        <button data-keyword="쇼핑" class="btn-filter">쇼핑</button>
+        <button data-keyword="문화" class="btn-filter">문화</button>
+        <button data-keyword="기타" class="btn-filter">기타</button>
+      </div>
+
+      <div class="total-section">
+        <span>총 지출</span>
+        <span id="total-amount"></span>
+      </div>
+
+      <div id="expense-list"></div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>
