@@ -7,6 +7,7 @@ const expensesDateInput = document.getElementById("expenses-date");
 const expensesCategory = document.getElementById("expenses-category");
 const expensesDescription = document.getElementById("expenses-description");
 const expensesPrice = document.getElementById("expenses-price");
+const expensesBtnSubmit = document.getElementById("btn-submit");
 const categories = document.querySelectorAll(".btn-filter");
 
 let editingId = null;
@@ -15,6 +16,15 @@ async function init() {
   const datas = await getDatas();
   renderExpenseList(datas);
   renderTotalAmount(datas);
+}
+
+function handleEditCancel(e) {
+  e.preventDefault();
+
+  expensesForm.reset();
+  expensesBtnSubmit.textContent = "추가";
+  editingId = null;
+  e.target.remove();
 }
 
 async function handleActions(e) {
@@ -27,7 +37,17 @@ async function handleActions(e) {
   }
 
   if (target.classList.contains("btn-edit")) {
+    const btnCancel = document.createElement("button");
+    btnCancel.setAttribute("type", "button");
+    btnCancel.classList.add("btn-cancel");
+    btnCancel.textContent = "취소";
+
+    btnCancel.addEventListener("click", handleEditCancel);
+    if (!expensesForm.querySelector(".btn-cancel"))
+      expensesForm.querySelector(".form-row").appendChild(btnCancel);
+
     editingId = target.closest("li").dataset.id;
+    expensesBtnSubmit.textContent = "수정";
 
     const data = await getDatas(editingId);
     const { date, category, description, amount } = data;
@@ -74,6 +94,8 @@ async function handleSubmit(e) {
   } else {
     // 수정
     await editData(editingId, data);
+    editingId = null;
+    expensesBtnSubmit.textContent = "추가";
   }
 }
 

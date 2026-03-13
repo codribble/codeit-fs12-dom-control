@@ -64,6 +64,14 @@ h1 {
   background-color: #2980b9;
 }
 
+.form-row .btn-cancel {
+  background-color: #e74c3c;
+}
+
+.form-row .btn-cancel:hover {
+  background-color: #c0392b;
+}
+
 /* 총 지출 섹션 */
 .total-section {
   background: #fff;
